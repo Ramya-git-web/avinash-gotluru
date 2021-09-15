@@ -1,22 +1,12 @@
 ## Hola,<img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px"> I'm [Avinash Gotluru](https://avinashgotluru.me)
 
 <!-- <p align="left"> <img src="https://komarev.com/ghpvc/?username=avinash-gotluru&label=Views&color=blue&style=plastic" alt="avinash-gotluru" /> </p> -->
-<h3 align="center">A passionate frontend developer from India</h3>
-
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=avinash-gotluru" alt="avinash-gotluru" /></a> </p>
+<h3 align="center">A passionate Flutter developer</h3>
 
 
-
-
-<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=avinash-gotluru&show_icons=true&locale=en&layout=compact" alt="avinash-gotluru" /></p>
-
-<a href="https://github.com/avinash-gotluru">
+<!-- <a href="https://github.com/avinash-gotluru">
   <img align="left" alt="Avinash's Github" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" />
-</a>
-
-<br/>
-<br/>
-
+</a> -->
 
 <!-- - 🔭 I’m currently working on  -->
 - 🌱 I’m currently learning more about Flutter.
@@ -46,10 +36,23 @@
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/dart/dart.png"></code>
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/android/android.png"></code>
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>     -->
+<!-- <p align="center">
+    <a href="https://github.com/avinash-goturu/github-readme-streak-stats">
+        <img title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Avinash's streak" src="https://github-readme-streak-stats.herokuapp.com/?user=avinash-goturu&theme=black-ice&hide_border=true&stroke=0000&background=060A0CD0"/>
+    </a>
+</p> -->
 
-<a href="https://github.com/avinash-gotluru">
+## 📊 My Github Stats
+
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=avinash-gotluru" alt="avinash-gotluru" /></a> </p>
+
+<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=avinash-gotluru&show_icons=true&locale=en&layout=compact" alt="avinash-gotluru" /></p>
+<br/>
+
+
+<!-- <a href="https://github.com/avinash-gotluru">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=avinash-gotluru&theme=light&hide_langs_below=1" />
-</a>
+</a> -->
 <a href="https://github.com/avinash-gotluru">
  <img align="center" src="https://github-readme-stats.vercel.app/api?username=avinash-gotluru&show_icons=true&theme=light&line_height=27" alt="Avinash's github stats"/>
 </a>
