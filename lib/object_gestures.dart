@@ -74,7 +74,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
     this.arSessionManager!.onInitialize(
           showFeaturePoints: false,
           showPlanes: true,
-          showWorldOrigin: true,
+          showWorldOrigin: false,
           handlePans: true,
           handleRotation: true,
         );
@@ -106,9 +106,8 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
     if (didAddAnchor == true) {
       anchors.add(newAnchor);
       var newNode = ARNode(
-        type: NodeType.webGLB,
-        uri:
-            "https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb?raw=true",
+        type: NodeType.localGLTF2,
+        uri: "images/ToyCar.gltf",
         scale: Vector3(0.2, 0.2, 0.2),
         position: Vector3(0.0, 0.0, 0.0),
         rotation: Vector4(1.0, 0.0, 0.0, 0.0),
