@@ -1,3 +1,4 @@
+import 'package:ar_demo/utils/app.dart';
 import 'package:ar_flutter_plugin/managers/ar_location_manager.dart';
 import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
 import 'package:ar_flutter_plugin/managers/ar_object_manager.dart';
@@ -13,7 +14,8 @@ import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
 import 'package:vector_math/vector_math_64.dart';
 
 class ObjectGesturesWidget extends StatefulWidget {
-  const ObjectGesturesWidget({Key? key}) : super(key: key);
+  const ObjectGesturesWidget({Key? key, required this.uri}) : super(key: key);
+  final String uri;
 
   @override
   State<ObjectGesturesWidget> createState() => _ObjectGesturesWidgetState();
@@ -37,6 +39,14 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.chevron_left),
+            onPressed: () {
+              App.pop();
+            },
+          ),
+        ],
         title: const Text('Object Transformation Gestures'),
       ),
       body: Stack(
@@ -107,7 +117,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
       anchors.add(newAnchor);
       var newNode = ARNode(
         type: NodeType.localGLTF2,
-        uri: "images/cheeseburger_bao_buns/scene.gltf",
+        uri: widget.uri,
         // uri: "images/pumpkin/scene.gltf",
         // uri: "images/pizza/pizza.gltf",
         // uri: "images/doughnut/scene.gltf",

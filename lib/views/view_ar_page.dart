@@ -1,23 +1,17 @@
-import 'package:ar_demo/utils/app.dart';
-import 'package:ar_demo/views/splash_page.dart';
-import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
+import 'package:ar_demo/object_gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ar_flutter_plugin/ar_flutter_plugin.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
-}
+class ViewAr extends StatefulWidget {
+  const ViewAr({Key? key, required this.uri}) : super(key: key);
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-  static const String _title = 'AR Plugin Demo';
-
+  final String uri;
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<ViewAr> createState() => _ViewArState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _ViewArState extends State<ViewAr> {
   String _platformVersion = 'Unknown';
 
   @override
@@ -45,22 +39,18 @@ class _MyAppState extends State<MyApp> {
       _platformVersion = platformVersion;
     });
   }
-
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: AppContext.navigatorState,
-      home: const Scaffold(
-        body: SplashPage(),
-        // body: Column(
-        //   children: [
-        //     Text('Running on: $_platformVersion\n'),
-        //     const Expanded(
-        //       child: ObjectGesturesWidget(),
-        //     ),
-        //   ],
-        // ),
+    return  Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Text('Running on: $_platformVersion\n'),
+            Expanded(
+              child: ObjectGesturesWidget(uri: widget.uri),
+            ),
+          ],
+        ),
       ),
     );
   }
