@@ -43,7 +43,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
         children: [
           ARView(
             onARViewCreated: onARViewCreated,
-            planeDetectionConfig: PlaneDetectionConfig.horizontalAndVertical,
+            planeDetectionConfig: PlaneDetectionConfig.horizontal,
           ),
           Align(
             alignment: FractionalOffset.bottomCenter,
@@ -107,8 +107,11 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
       anchors.add(newAnchor);
       var newNode = ARNode(
         type: NodeType.localGLTF2,
-        uri: "images/ToyCar.gltf",
-        scale: Vector3(0.2, 0.2, 0.2),
+        uri: "images/cheeseburger_bao_buns/scene.gltf",
+        // uri: "images/pumpkin/scene.gltf",
+        // uri: "images/pizza/pizza.gltf",
+        // uri: "images/doughnut/scene.gltf",
+        scale: Vector3.all(50),
         position: Vector3(0.0, 0.0, 0.0),
         rotation: Vector4(1.0, 0.0, 0.0, 0.0),
       );

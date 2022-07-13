@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cheeseburger Bao Buns
+* source:	https://sketchfab.com/3d-models/cheeseburger-bao-buns-098ebbb16fb64559a9e025119d8f5449
+* author:	Terrie Simmons-Ehrhardt (https://sketchfab.com/terrielsimmons)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cheeseburger Bao Buns" (https://sketchfab.com/3d-models/cheeseburger-bao-buns-098ebbb16fb64559a9e025119d8f5449) by Terrie Simmons-Ehrhardt (https://sketchfab.com/terrielsimmons) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

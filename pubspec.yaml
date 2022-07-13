@@ -22,6 +22,12 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - images/pizza/
+    - images/doughnut/
+    - images/cheeseburger_bao_buns/
+    - images/pumpkin/
+    - images/cheeseburger_bao_buns/textures/
+    - images/pumpkin/textures/
   #   - images/a_dot_ham.jpeg
 
   # fonts:

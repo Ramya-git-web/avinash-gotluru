@@ -1,0 +1,429 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 508,
+      "max": [
+        0.8739969730377197,
+        0.12755300104618073,
+        0.8739969730377197
+      ],
+      "min": [
+        -0.8739969730377197,
+        0.027070999145507813,
+        -0.8739969730377197
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 6096,
+      "componentType": 5126,
+      "count": 508,
+      "max": [
+        0.9951992630958557,
+        0.9809695482254028,
+        0.9951992034912109
+      ],
+      "min": [
+        -0.9951992630958557,
+        -1.0,
+        -0.9951992034912109
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 508,
+      "max": [
+        0.9951962232589722,
+        0.9951922297477722,
+        0.8007553815841675,
+        1.0
+      ],
+      "min": [
+        -0.8007310032844543,
+        -0.9951510429382324,
+        -0.8007211685180664,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 508,
+      "max": [
+        0.9993119835853577,
+        0.892175018787384
+      ],
+      "min": [
+        0.0006880000000819564,
+        0.0006880000000819564
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 4064,
+      "componentType": 5126,
+      "count": 508,
+      "max": [
+        0.9993119835853577,
+        0.892175018787384
+      ],
+      "min": [
+        0.0006880000000819564,
+        0.0006880000000819564
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 2010,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 12192,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.8089150190353394,
+        0.14853499829769135,
+        0.8089150190353394
+      ],
+      "min": [
+        -0.8089150190353394,
+        0.12007699906826019,
+        -0.8089150190353394
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 14112,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.12298110127449036,
+        1.0,
+        0.12298136204481125
+      ],
+      "min": [
+        -0.12298110127449036,
+        0.9924089312553406,
+        -0.12298136204481125
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 8128,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.6347267031669617,
+        0.12239833176136017,
+        0.7732629179954529,
+        1.0
+      ],
+      "min": [
+        0.6296204328536987,
+        -0.1223982572555542,
+        0.7671921253204346,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 8128,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.9994999766349792,
+        0.9994999766349792
+      ],
+      "min": [
+        0.0004990000161342323,
+        0.0004990000161342323
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 9408,
+      "componentType": 5126,
+      "count": 160,
+      "max": [
+        0.9994999766349792,
+        0.9994999766349792
+      ],
+      "min": [
+        0.0004990000161342323,
+        0.0004990000161342323
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 8040,
+      "componentType": 5125,
+      "count": 474,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "title": "Pepperoni Pizza"
+    },
+    "generator": "Sketchfab-13.65.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 9936,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 10688,
+      "byteOffset": 9936,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16032,
+      "byteOffset": 20624,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 10688,
+      "byteOffset": 36656,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 47344,
+      "uri": "pizza.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "Pizza_T_D_baseColor.png"
+    },
+    {
+      "uri": "Pizza_T_D_normal.png"
+    },
+    {
+      "uri": "PizzaTop_T_D_baseColor.png"
+    },
+    {
+      "uri": "PizzaTop_T_D_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Pizza_T_D",
+      "normalTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8464954421102561
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "PizzaTop_T_D",
+      "normalTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.8285888395623711
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "KevsPizza_Cylinder.003_Pizza_T_D_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "KevsPizza_Cylinder.003_PizzaTop_T_D_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6,
+            "TANGENT": 8,
+            "TEXCOORD_0": 9,
+            "TEXCOORD_1": 10
+          },
+          "indices": 11,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "16da1ef23b4d455b89a9d40b65dea773.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        99.99999999999866,
+        1.6292067073209114e-05,
+        0.0,
+        0.0,
+        -1.6292067073209114e-05,
+        99.99999999999866,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "KevsPizza_Cylinder.003"
+    },
+    {
+      "mesh": 0,
+      "name": "KevsPizza_Cylinder.003_Pizza_T_D_0"
+    },
+    {
+      "mesh": 1,
+      "name": "KevsPizza_Cylinder.003_PizzaTop_T_D_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    }
+  ]
+}
