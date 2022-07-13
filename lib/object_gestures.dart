@@ -10,10 +10,12 @@ import 'package:ar_flutter_plugin/datatypes/node_types.dart';
 import 'package:ar_flutter_plugin/datatypes/hittest_result_types.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ObjectGesturesWidget extends StatefulWidget {
-  const ObjectGesturesWidget({Key? key}) : super(key: key);
+  const ObjectGesturesWidget({Key? key, required this.uri}) : super(key: key);
+
+  final String uri;
 
   @override
   State<ObjectGesturesWidget> createState() => _ObjectGesturesWidgetState();
@@ -27,6 +29,8 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
 
+  int _value = 10;
+
   @override
   void dispose() {
     super.dispose();
@@ -37,25 +41,47 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Object Transformation Gestures'),
+        title: const Text('3D viewer'),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          ARView(
-            onARViewCreated: onARViewCreated,
-            planeDetectionConfig: PlaneDetectionConfig.horizontal,
-          ),
-          Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: onRemoveEverything,
-                  child: const Text("Remove Everything"),
-                ),
-              ],
+          Expanded(
+            child: ARView(
+              onARViewCreated: onARViewCreated,
+              planeDetectionConfig: PlaneDetectionConfig.horizontal,
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Slider(
+                    value: _value.toDouble(),
+                    min: 1.0,
+                    max: 100.0,
+                    divisions: 50,
+                    activeColor: Colors.green,
+                    inactiveColor: Colors.orange,
+                    label: 'Set scaling',
+                    onChanged: (double newValue) {
+                      setState(() {
+                        _value = newValue.round();
+                      });
+                      for (var value in nodes) {
+                        final newTransform = Matrix4.identity();
+                        newTransform.scale(newValue);
+                        value.transform = newTransform;
+                      }
+                    },
+                    semanticFormatterCallback: (double newValue) {
+                      return '${newValue.round()} dollars';
+                    }),
+              ),
+              ElevatedButton(
+                onPressed: onRemoveEverything,
+                child: const Text("Remove Everything"),
+              ),
+            ],
           )
         ],
       ),
@@ -107,13 +133,10 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
       anchors.add(newAnchor);
       var newNode = ARNode(
         type: NodeType.localGLTF2,
-        uri: "images/cheeseburger_bao_buns/scene.gltf",
-        // uri: "images/pumpkin/scene.gltf",
-        // uri: "images/pizza/pizza.gltf",
-        // uri: "images/doughnut/scene.gltf",
-        scale: Vector3.all(50),
-        position: Vector3(0.0, 0.0, 0.0),
-        rotation: Vector4(1.0, 0.0, 0.0, 0.0),
+        uri: widget.uri,
+        scale: vector.Vector3.all(_value.toDouble()),
+        position: vector.Vector3(0.0, 0.0, 0.0),
+        rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0),
       );
       bool? didAddNodeToAnchor =
           await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
