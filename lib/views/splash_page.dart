@@ -13,7 +13,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset('images/img.png'),
+      child: Image.asset('images/ic_mt_logo.png'),
     );
   }
 

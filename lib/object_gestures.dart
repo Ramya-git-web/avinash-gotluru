@@ -1,4 +1,3 @@
-import 'package:ar_demo/utils/app.dart';
 import 'package:ar_flutter_plugin/managers/ar_location_manager.dart';
 import 'package:ar_flutter_plugin/managers/ar_session_manager.dart';
 import 'package:ar_flutter_plugin/managers/ar_object_manager.dart';
@@ -11,11 +10,14 @@ import 'package:ar_flutter_plugin/datatypes/node_types.dart';
 import 'package:ar_flutter_plugin/datatypes/hittest_result_types.dart';
 import 'package:ar_flutter_plugin/models/ar_node.dart';
 import 'package:ar_flutter_plugin/models/ar_hittest_result.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ObjectGesturesWidget extends StatefulWidget {
-  const ObjectGesturesWidget({Key? key, required this.uri}) : super(key: key);
+  const ObjectGesturesWidget({Key? key, required this.uri, required this.name})
+      : super(key: key);
+
   final String uri;
+  final String name;
 
   @override
   State<ObjectGesturesWidget> createState() => _ObjectGesturesWidgetState();
@@ -29,6 +31,13 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   List<ARNode> nodes = [];
   List<ARAnchor> anchors = [];
 
+  int _value = 10;
+  int _rotationXValue = 0;
+  int _rotationYValue = 0;
+  int _rotationZValue = 0;
+  bool showSlider = false;
+  bool showRotationSlider = false;
+
   @override
   void dispose() {
     super.dispose();
@@ -39,34 +48,167 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.chevron_left),
-            onPressed: () {
-              App.pop();
-            },
-          ),
-        ],
-        title: const Text('Object Transformation Gestures'),
+        title: Text(widget.name),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          ARView(
-            onARViewCreated: onARViewCreated,
-            planeDetectionConfig: PlaneDetectionConfig.horizontal,
-          ),
-          Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: onRemoveEverything,
-                  child: const Text("Remove Everything"),
-                ),
-              ],
+          Expanded(
+            child: ARView(
+              onARViewCreated: onARViewCreated,
+              planeDetectionConfig: PlaneDetectionConfig.horizontal,
             ),
-          )
+          ),
+          if (showSlider)
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white,
+                  width: 1,
+                ),
+                color: Colors.black38,
+              ),
+              child: Slider(
+                value: _value.toDouble(),
+                min: 1.0,
+                max: 100.0,
+                divisions: 50,
+                activeColor: Colors.green,
+                inactiveColor: Colors.orange,
+                label: 'Set scaling',
+                onChanged: (double newValue) {
+                  setState(() {
+                    _value = newValue.round();
+                  });
+                  for (var value in nodes) {
+                    final newTransform = Matrix4.identity();
+                    newTransform.scale(newValue);
+                    value.transform = newTransform;
+                  }
+                },
+              ),
+            ),
+          if (showRotationSlider)
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.white,
+                  width: 1,
+                ),
+                color: Colors.black38,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text('X-axis'),
+                        Slider(
+                          value: _rotationXValue.toDouble(),
+                          min: 0.0,
+                          max: 360.0,
+                          divisions: 30,
+                          activeColor: Colors.green,
+                          inactiveColor: Colors.orange,
+                          label: 'Set X rotation',
+                          onChanged: (double newValue) {
+                            setState(() {
+                              _rotationXValue = newValue.round();
+                            });
+                            for (var value in nodes) {
+                              value.rotation = vector.Matrix3.rotationX(newValue);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text('Y-axis'),
+                        Slider(
+                          value: _rotationYValue.toDouble(),
+                          min: 0.0,
+                          max: 360.0,
+                          divisions: 30,
+                          activeColor: Colors.green,
+                          inactiveColor: Colors.orange,
+                          label: 'Set Y rotation',
+                          onChanged: (double newValue) {
+                            setState(() {
+                              _rotationYValue = newValue.round();
+                            });
+                            for (var value in nodes) {
+                              value.rotation = vector.Matrix3.rotationY(newValue);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text('Z-axis'),
+                        Slider(
+                          value: _rotationZValue.toDouble(),
+                          min: 0.0,
+                          max: 360.0,
+                          divisions: 30,
+                          activeColor: Colors.green,
+                          inactiveColor: Colors.orange,
+                          label: 'Set Z rotation',
+                          onChanged: (double newValue) {
+                            setState(() {
+                              _rotationZValue = newValue.round();
+                            });
+                            for (var value in nodes) {
+                              value.rotation = vector.Matrix3.rotationZ(newValue);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    showRotationSlider = false;
+                    showSlider = !showSlider;
+                  });
+                },
+                icon: const Icon(
+                  Icons.aspect_ratio,
+                  color: Colors.redAccent,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    showSlider = false;
+                    showRotationSlider = !showRotationSlider;
+                  });
+                },
+                icon: const Icon(
+                  Icons.threed_rotation_outlined,
+                  color: Colors.redAccent,
+                ),
+              ),
+              IconButton(
+                onPressed: onRemoveEverything,
+                icon: const Icon(
+                  Icons.highlight_remove,
+                  color: Colors.redAccent,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -83,7 +225,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
 
     this.arSessionManager!.onInitialize(
           showFeaturePoints: false,
-          showPlanes: true,
+          showPlanes: false,
           showWorldOrigin: false,
           handlePans: true,
           handleRotation: true,
@@ -115,15 +257,13 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
     bool? didAddAnchor = await arAnchorManager!.addAnchor(newAnchor);
     if (didAddAnchor == true) {
       anchors.add(newAnchor);
+
       var newNode = ARNode(
         type: NodeType.localGLTF2,
         uri: widget.uri,
-        // uri: "images/pumpkin/scene.gltf",
-        // uri: "images/pizza/pizza.gltf",
-        // uri: "images/doughnut/scene.gltf",
-        scale: Vector3.all(50),
-        position: Vector3(0.0, 0.0, 0.0),
-        rotation: Vector4(1.0, 0.0, 0.0, 0.0),
+        scale: vector.Vector3.all(_value.toDouble()),
+        position: vector.Vector3(0.0, 0.0, 0.0),
+        rotation: vector.Vector4(1.0, 0.0, 0.0, 0.0),
       );
       bool? didAddNodeToAnchor =
           await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
@@ -147,7 +287,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
 
   onPanEnded(String nodeName, Matrix4 newTransform) {
     debugPrint("Ended panning node $nodeName");
-    final pannedNode = nodes.firstWhere((element) => element.name == nodeName);
+    // final pannedNode = nodes.firstWhere((element) => element.name == nodeName);
     // pannedNode.transform = newTransform;
   }
 
@@ -161,7 +301,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
 
   onRotationEnded(String nodeName, Matrix4 newTransform) {
     debugPrint("Ended rotating node $nodeName");
-    final rotatedNode = nodes.firstWhere((element) => element.name == nodeName);
+    // final rotatedNode = nodes.firstWhere((element) => element.name == nodeName);
     // rotatedNode.transform = newTransform;
   }
 }

@@ -1,7 +1,3 @@
-/// title : "Pizza Quattro Stagioni"
-/// description : "Artichokes, tomatoes, basil, mushrooms & ham"
-/// asset : "images/pizza"
-
 class RecipeModel {
   RecipeModel({
       String? title,
@@ -13,7 +9,6 @@ class RecipeModel {
     _asset = asset;
     _uri = uri;
 }
-
 
   String? _title;
   String? _description;

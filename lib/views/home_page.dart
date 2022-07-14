@@ -1,6 +1,6 @@
 import 'package:ar_demo/model/recipe_model.dart';
+import 'package:ar_demo/object_gestures.dart';
 import 'package:ar_demo/utils/app.dart';
-import 'package:ar_demo/views/view_ar_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,49 +9,63 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-// uri: "images/pumpkin/scene.gltf",
-// uri: "images/pizza/pizza.gltf",
-// uri: "images/doughnut/scene.gltf",
+
 class _HomePageState extends State<HomePage> {
   List<RecipeModel> recipe = [
     RecipeModel(
-        title: 'Pizza Quattro Stagioni',
-        asset: 'images/pizza.png',
-        uri: 'images/pizza/pizza.gltf',
-        description: 'Artichokes, tomatoes, basil, mushrooms & ham'),
+      title: 'Pumpkin',
+      asset: 'images/ic_pumpkin.png',
+      uri: 'images/pumpkin/scene.gltf',
+      description: 'Pumpkin is a sweet, orange, and meaty vegetable.',
+    ),RecipeModel(
+      title: 'Pizza Quattro Stagioni',
+      asset: 'images/pizza.png',
+      uri: 'images/pizza/pizza.gltf',
+      description: 'Artichokes, tomatoes, basil, mushrooms & ham',
+    ),
     RecipeModel(
-        title: 'Doughnut',
-        asset: 'images/doughnut.png',
-        uri: 'images/doughnut/scene.gltf',
-        description: 'Rise, onion, mushrooms, parmigiano & oregano'),
+      title: 'Doughnut',
+      asset: 'images/doughnut.png',
+      uri: 'images/doughnut/scene.gltf',
+      description: 'Rise, onion, mushrooms, parmigiano & oregano',
+    ),
     RecipeModel(
-        title: 'Cheese burger',
-        asset: 'images/cheese.png',
-        uri: 'images/cheeseburger_bao_buns/scene.gltf',
-        description: 'Tomatoes, home toasted bread, guacamole & cream cheese'),
+      title: 'Cheese burger',
+      asset: 'images/cheese.png',
+      uri: 'images/cheeseburger_bao_buns/scene.gltf',
+      description: 'Tomatoes, home toasted bread, guacamole & cream cheese',
+    ),
+    RecipeModel(
+      title: 'Ice Cream',
+      asset: 'images/ic_icecream.png',
+      uri: 'images/ice_cream/scene.gltf',
+      description: 'Bunch of ice cream with a twist of chocolate and variety of flavours',
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(
-                3,
-                (index) => itemCard(
-                    asset: recipe[index].asset,
-                    title: recipe[index].title,
-                    uri: recipe[index].uri,
-                    description: recipe[index].description))),
+      appBar: AppBar(
+        title: const Text('AR Demo'),
+      ),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(20),
+        itemCount: recipe.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
+        itemBuilder: (_, index) => itemCard(
+          recipe[index],
+        ),
       ),
     );
   }
 
-  itemCard({String? asset, String? title, String? description, String? uri}) {
+  itemCard(RecipeModel model) {
     return Container(
       margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
@@ -60,31 +74,61 @@ class _HomePageState extends State<HomePage> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 2,
-            offset: const Offset(0, 3), // changes position of shadow
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Image.asset(asset!),
-          App.columnSpacer(),
-          Text(title!,
-              style:
-                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          App.columnSpacer(),
-          Text(description!,
-              style:
-                  const TextStyle(fontSize: 15, fontWeight: FontWeight.normal)),
-          App.columnSpacer(),
-          OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              minimumSize: Size(App.width, App.height * 0.08),
+          Expanded(
+            child: Image.asset(
+              model.asset ?? '',
+              height: 150,
+              fit: BoxFit.cover,
+            ),
+          ),
+          App.columnSpacer(height: 10),
+          Text(
+            model.title ?? '',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          App.columnSpacer(height: 5),
+          Text(
+            model.description ?? '',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          App.columnSpacer(height: 10),
+          OutlinedButton.icon(
+            icon: Icon(
+              Icons.zoom_out_map,
+              color: Colors.deepPurple[900],
             ),
             onPressed: () {
-              App.push(ViewAr(uri: uri!));
+              if (model.uri != null) {
+                App.push(
+                  ObjectGesturesWidget(
+                    uri: model.uri!,
+                    name: model.title ?? '',
+                  ),
+                );
+              }
             },
-            child: Text('View in 3D',
-                style: TextStyle(color: Colors.deepPurple[900])),
+            label: Text(
+              'View in 3D',
+              style: TextStyle(
+                color: Colors.deepPurple[900],
+              ),
+            ),
           ),
         ],
       ),
